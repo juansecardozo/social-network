@@ -6,8 +6,9 @@ const app = express();
 
 const user = require("./components/user/network");
 
+app.use(express.json());
 app.use("/api/users", user);
 
-app.listen(config.api.port, () => {
-    console.log(`API listen on port ${config.api.port}`);
+app.listen(config.api.port, config.api.host, () => {
+    console.log(`API listen on ${config.api.host}:${config.api.port}`);
 });
